@@ -29,7 +29,7 @@ export function DonorProfileScreen({ donor, clothingItems, onBack }: DonorProfil
             variant="ghost"
             size="sm"
             onClick={onBack}
-            className="p-2 text-text-primary hover:text-accent-primary hover:bg-bg-secondary transition-colors"
+            className="p-2"
           >
             <ArrowLeft className="h-4 w-4" />
           </Button>

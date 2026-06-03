@@ -378,7 +378,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-bg-secondary to-bg-tertiary p-4 transition-colors duration-300">
+    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 p-4">
       {renderScreen()}
     </div>
   )
