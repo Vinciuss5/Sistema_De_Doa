@@ -114,18 +114,18 @@ export function SignupScreen({ onBack, onSuccess }: SignupScreenProps) {
 
   if (isSuccess) {
     return (
-      <Card className="w-full max-w-md mx-auto bg-white shadow-sm border border-gray-200">
+      <Card className="w-full max-w-md mx-auto bg-bg-primary shadow-sm border border-border-default transition-colors duration-300">
         <CardHeader className="text-center pb-6">
           <div className="flex flex-col items-center">
-            <CheckCircle className="h-16 w-16 text-green-600 mb-4" />
-            <h2 className="text-2xl text-gray-800">Conta Criada!</h2>
+            <CheckCircle className="h-16 w-16 text-status-success mb-4" />
+            <h2 className="text-2xl text-text-primary">Conta Criada!</h2>
           </div>
         </CardHeader>
         <CardContent className="text-center space-y-4">
-          <p className="text-gray-600">
+          <p className="text-text-secondary">
             Sua conta foi criada com sucesso.
           </p>
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-text-muted">
             Redirecionando para o sistema...
           </p>
         </CardContent>
@@ -134,23 +134,23 @@ export function SignupScreen({ onBack, onSuccess }: SignupScreenProps) {
   }
 
   return (
-    <Card className="w-full max-w-md mx-auto bg-white shadow-sm border border-gray-200">
+    <Card className="w-full max-w-md mx-auto bg-bg-primary shadow-sm border border-border-default transition-colors duration-300">
       <CardHeader className="text-center pb-6">
         <div className="flex items-center justify-between mb-4">
           <Button
             variant="ghost"
             size="sm"
             onClick={onBack}
-            className="p-2"
+            className="p-2 text-text-primary hover:text-accent-primary hover:bg-bg-secondary transition-colors"
             disabled={isLoading}
           >
             <ArrowLeft className="h-4 w-4" />
           </Button>
           <div className="flex-1" />
         </div>
-        <h1 className="text-xl text-gray-800 mb-6">Sistema de Doação de Roupas para Instituições</h1>
-        <h2 className="text-2xl text-gray-800">Criar Conta</h2>
-        <p className="text-sm text-gray-600 mt-2">Cadastre-se para acessar o sistema</p>
+        <h1 className="text-xl text-text-primary mb-6">Sistema de Doação de Roupas para Instituições</h1>
+        <h2 className="text-2xl text-text-primary">Criar Conta</h2>
+        <p className="text-sm text-text-secondary mt-2">Cadastre-se para acessar o sistema</p>
       </CardHeader>
       <CardContent className="space-y-6">
         {signupError && (
@@ -161,58 +161,58 @@ export function SignupScreen({ onBack, onSuccess }: SignupScreenProps) {
         )}
 
         <div className="space-y-2">
-          <Label htmlFor="name" className="text-gray-800">Nome Completo *</Label>
+          <Label htmlFor="name" className="text-text-primary">Nome Completo *</Label>
           <Input
             id="name"
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="bg-gray-50 border-gray-300 rounded-md"
+            className="bg-bg-secondary border-border-default text-text-primary rounded-md transition-colors"
             placeholder="Seu nome completo"
             disabled={isLoading}
           />
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="email" className="text-gray-800">Email *</Label>
+          <Label htmlFor="email" className="text-text-primary">Email *</Label>
           <Input
             id="email"
             type="email"
             value={email}
             onChange={handleEmailChange}
-            className={`bg-gray-50 border-gray-300 rounded-md ${emailError ? 'border-red-500' : ''}`}
+            className={`bg-bg-secondary border-border-default text-text-primary rounded-md transition-colors ${emailError ? 'border-status-error' : ''}`}
             placeholder="seu.email@instituicao.org"
             disabled={isLoading}
           />
           {emailError && (
-            <p className="text-red-600 text-sm mt-1">{emailError}</p>
+            <p className="text-status-error text-sm mt-1">{emailError}</p>
           )}
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="password" className="text-gray-800">Senha *</Label>
+          <Label htmlFor="password" className="text-text-primary">Senha *</Label>
           <Input
             id="password"
             type="password"
             value={password}
             onChange={handlePasswordChange}
-            className={`bg-gray-50 border-gray-300 rounded-md ${passwordError ? 'border-red-500' : ''}`}
+            className={`bg-bg-secondary border-border-default text-text-primary rounded-md transition-colors ${passwordError ? 'border-status-error' : ''}`}
             placeholder="Mínimo 6 caracteres"
             disabled={isLoading}
           />
           {passwordError && (
-            <p className="text-red-600 text-sm mt-1">{passwordError}</p>
+            <p className="text-status-error text-sm mt-1">{passwordError}</p>
           )}
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="confirmPassword" className="text-gray-800">Confirmar Senha *</Label>
+          <Label htmlFor="confirmPassword" className="text-text-primary">Confirmar Senha *</Label>
           <Input
             id="confirmPassword"
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-            className="bg-gray-50 border-gray-300 rounded-md"
+            className="bg-bg-secondary border-border-default text-text-primary rounded-md transition-colors"
             placeholder="Digite a senha novamente"
             disabled={isLoading}
           />
@@ -221,7 +221,7 @@ export function SignupScreen({ onBack, onSuccess }: SignupScreenProps) {
         <Button
           onClick={handleSignup}
           disabled={isLoading}
-          className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white rounded-md h-12"
+          className="w-full !bg-button-primary hover:!bg-button-hover disabled:opacity-50 !text-button-text rounded-md h-12 transition-colors"
         >
           {isLoading ? (
             <div className="flex items-center gap-2">
@@ -234,11 +234,11 @@ export function SignupScreen({ onBack, onSuccess }: SignupScreenProps) {
         </Button>
 
         <div className="text-center">
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-text-muted">
             Já tem uma conta?{' '}
             <button
               onClick={onBack}
-              className="text-blue-600 hover:text-blue-700 underline"
+              className="text-accent-primary hover:text-accent-hover underline transition-colors"
               disabled={isLoading}
             >
               Fazer login

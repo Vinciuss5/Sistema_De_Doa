@@ -2,6 +2,7 @@ import { Button } from './ui/button'
 import { Card, CardContent, CardHeader } from './ui/card'
 import { ArrowLeft, Package, BarChart3, UserPlus, Search, Users, UserCheck, FileBarChart, LogOut } from 'lucide-react'
 import { signOut } from '../utils/supabase/client'
+import { ThemeToggle } from './ThemeToggle'
 
 interface MenuScreenProps {
   onNavigateToDonor: () => void
@@ -20,76 +21,77 @@ export function MenuScreen({ onNavigateToDonor, onNavigateToBeneficiary, onNavig
     onBack()
   }
   return (
-    <Card className="w-full max-w-md mx-auto bg-white shadow-sm border border-gray-200">
+    <Card className="w-full max-w-md mx-auto bg-bg-primary shadow-sm border border-border-default transition-colors duration-300">
       <CardHeader className="text-center pb-6">
         <div className="flex items-center justify-between mb-4">
           <div className="flex-1" />
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={handleLogout}
-            className="p-2 text-red-600 hover:text-red-700 hover:bg-red-50"
-            title="Sair"
-          >
-            <LogOut className="h-4 w-4" />
-          </Button>
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={handleLogout}
+              className="p-2 text-status-error hover:text-status-error hover:bg-status-error/10 transition-colors"
+              title="Sair"
+            >
+              <LogOut className="h-4 w-4" />
+            </Button>
+          </div>
         </div>
-        <h1 className="text-xl text-gray-800 mb-6">Sistema de Doação de Roupas para Instituições</h1>
-        <h2 className="text-2xl text-gray-800">Menu Principal</h2>
-        <p className="text-sm text-gray-600 mt-2">Painel de controle da instituição</p>
+        <h1 className="text-2xl text-text-primary">Painel de Controle</h1>
       </CardHeader>
       <CardContent className="space-y-4">
-        <Button 
+        <Button
           onClick={onNavigateToDonor}
-          className="w-full bg-purple-600 hover:bg-purple-700 text-white rounded-md h-16 flex items-center justify-center gap-3"
+          className="w-full !bg-button-primary hover:!bg-button-hover !text-button-text rounded-md h-16 flex items-center justify-center gap-3 transition-colors"
         >
           <UserPlus className="h-5 w-5" />
           <span>Cadastrar Doador</span>
         </Button>
-        
-        <Button 
+
+        <Button
           onClick={onNavigateToBeneficiary}
-          className="w-full bg-indigo-600 hover:bg-indigo-700 text-white rounded-md h-16 flex items-center justify-center gap-3"
+          className="w-full !bg-button-primary hover:!bg-button-hover !text-button-text rounded-md h-16 flex items-center justify-center gap-3 transition-colors"
         >
           <Users className="h-5 w-5" />
           <span>Cadastrar Beneficiário</span>
         </Button>
-        
-        <Button 
+
+        <Button
           onClick={onNavigateToSearch}
-          className="w-full bg-orange-600 hover:bg-orange-700 text-white rounded-md h-16 flex items-center justify-center gap-3"
+          className="w-full !bg-button-primary hover:!bg-button-hover !text-button-text rounded-md h-16 flex items-center justify-center gap-3 transition-colors"
         >
           <Search className="h-5 w-5" />
           <span>Pesquisar Doador</span>
         </Button>
-        
-        <Button 
+
+        <Button
           onClick={onNavigateToBeneficiarySearch}
-          className="w-full bg-teal-600 hover:bg-teal-700 text-white rounded-md h-16 flex items-center justify-center gap-3"
+          className="w-full !bg-button-primary hover:!bg-button-hover !text-button-text rounded-md h-16 flex items-center justify-center gap-3 transition-colors"
         >
           <UserCheck className="h-5 w-5" />
           <span>Pesquisar Beneficiário</span>
         </Button>
-        
-        <Button 
+
+        <Button
           onClick={onNavigateToProduct}
-          className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-md h-16 flex items-center justify-center gap-3"
+          className="w-full !bg-button-primary hover:!bg-button-hover !text-button-text rounded-md h-16 flex items-center justify-center gap-3 transition-colors"
         >
           <Package className="h-5 w-5" />
           <span>Cadastrar Roupa</span>
         </Button>
-        
-        <Button 
+
+        <Button
           onClick={onNavigateToStock}
-          className="w-full bg-green-600 hover:bg-green-700 text-white rounded-md h-16 flex items-center justify-center gap-3"
+          className="w-full !bg-button-primary hover:!bg-button-hover !text-button-text rounded-md h-16 flex items-center justify-center gap-3 transition-colors"
         >
           <BarChart3 className="h-5 w-5" />
           <span>Ver Estoque de Roupas</span>
         </Button>
-        
-        <Button 
+
+        <Button
           onClick={onNavigateToReports}
-          className="w-full bg-pink-600 hover:bg-pink-700 text-white rounded-md h-16 flex items-center justify-center gap-3"
+          className="w-full !bg-button-primary hover:!bg-button-hover !text-button-text rounded-md h-16 flex items-center justify-center gap-3 transition-colors"
         >
           <FileBarChart className="h-5 w-5" />
           <span>Relatórios de Doações</span>

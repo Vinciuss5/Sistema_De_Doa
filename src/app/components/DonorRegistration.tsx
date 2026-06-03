@@ -343,7 +343,7 @@ export function DonorRegistration({ onBack, onNext, onRefresh }: DonorRegistrati
             variant="ghost"
             size="sm"
             onClick={onBack}
-            className="p-2"
+            className="p-2 text-text-primary hover:text-accent-primary hover:bg-bg-secondary transition-colors"
           >
             <ArrowLeft className="h-4 w-4" />
           </Button>

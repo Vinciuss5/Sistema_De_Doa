@@ -5,6 +5,7 @@ import { Label } from './ui/label'
 import { Card, CardContent, CardHeader } from './ui/card'
 import { signIn } from '../utils/supabase/client'
 import { AlertCircle, Loader2 } from 'lucide-react'
+import { ThemeToggle } from './ThemeToggle'
 
 interface LoginScreenProps {
   onNavigateToPasswordRecovery: () => void
@@ -78,11 +79,12 @@ export function LoginScreen({ onNavigateToPasswordRecovery, onNavigateToMenu, on
   }
 
   return (
-    <Card className="w-full max-w-md mx-auto bg-white shadow-sm border border-gray-200">
+    <Card className="w-full max-w-md mx-auto bg-bg-primary shadow-sm border border-border-default transition-colors duration-300">
       <CardHeader className="text-center pb-6">
-        <h1 className="text-xl text-gray-800 mb-6">Sistema de Doação de Roupas para Instituições</h1>
-        <h2 className="text-2xl text-gray-800">Login Institucional</h2>
-        <p className="text-sm text-gray-600 mt-2">Acesso restrito para funcionários da instituição</p>
+        <div className="flex justify-end mb-4">
+          <ThemeToggle />
+        </div>
+        <h1 className="text-2xl text-text-primary mb-6">Sistema de Doação de Roupas</h1>
       </CardHeader>
       <CardContent className="space-y-6">
         {loginError && (
@@ -93,38 +95,38 @@ export function LoginScreen({ onNavigateToPasswordRecovery, onNavigateToMenu, on
         )}
         
         <div className="space-y-2">
-          <Label htmlFor="email" className="text-gray-800">Email *</Label>
+          <Label htmlFor="email" className="text-text-primary">Email *</Label>
           <Input
             id="email"
             type="email"
             value={email}
             onChange={handleEmailChange}
-            className={`bg-gray-50 border-gray-300 rounded-md ${emailError ? 'border-red-500 focus:border-red-500' : ''}`}
+            className={`bg-bg-secondary border-border-default text-text-primary rounded-md transition-colors ${emailError ? 'border-status-error focus:border-status-error' : ''}`}
             placeholder="seu.email@instituicao.org"
             disabled={isLoading}
           />
           {emailError && (
-            <p className="text-red-600 text-sm mt-1">{emailError}</p>
+            <p className="text-status-error text-sm mt-1">{emailError}</p>
           )}
         </div>
-        
+
         <div className="space-y-2">
-          <Label htmlFor="password" className="text-gray-800">Senha *</Label>
+          <Label htmlFor="password" className="text-text-primary">Senha *</Label>
           <Input
             id="password"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="bg-gray-50 border-gray-300 rounded-md"
+            className="bg-bg-secondary border-border-default text-text-primary rounded-md transition-colors"
             placeholder="••••••••"
             disabled={isLoading}
           />
         </div>
         
-        <Button 
+        <Button
           onClick={handleLogin}
           disabled={isLoading}
-          className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white rounded-md h-12"
+          className="w-full !bg-button-primary hover:!bg-button-hover disabled:opacity-50 !text-button-text rounded-md h-12 transition-colors"
         >
           {isLoading ? (
             <div className="flex items-center gap-2">
@@ -132,23 +134,23 @@ export function LoginScreen({ onNavigateToPasswordRecovery, onNavigateToMenu, on
               Entrando...
             </div>
           ) : (
-            'Entrar no Sistema'
+            'Logar'
           )}
         </Button>
         
         <div className="text-center space-y-2">
-          <button 
+          <button
             onClick={onNavigateToPasswordRecovery}
-            className="text-blue-600 hover:text-blue-700 underline text-sm block w-full"
+            className="text-accent-primary hover:text-accent-hover underline text-sm block w-full transition-colors"
           >
             Esqueceu sua senha?
           </button>
           {onNavigateToSignup && (
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-text-secondary">
               Não tem uma conta?{' '}
               <button
                 onClick={onNavigateToSignup}
-                className="text-blue-600 hover:text-blue-700 underline"
+                className="text-accent-primary hover:text-accent-hover underline transition-colors"
               >
                 Cadastre-se
               </button>
